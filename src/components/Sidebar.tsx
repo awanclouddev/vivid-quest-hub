@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { NavLink } from "react-router-dom";
 import { 
   BarChart3, 
   ShoppingBag, 
@@ -12,10 +11,10 @@ import {
 } from "lucide-react";
 
 const menuItems = [
-  { icon: BarChart3, label: "Dashboard", href: "/" },
-  { icon: ShoppingBag, label: "Food Order", href: "#" },
-  { icon: Menu, label: "Manage Menu", href: "/manage-menu" },
-  { icon: Star, label: "Customer Review", href: "#" },
+  { icon: BarChart3, label: "Dashboard", active: true },
+  { icon: ShoppingBag, label: "Food Order" },
+  { icon: Menu, label: "Manage Menu" },
+  { icon: Star, label: "Customer Review" },
 ];
 
 const otherItems = [
@@ -46,19 +45,19 @@ export const Sidebar = () => {
           </h3>
           <nav className="space-y-1">
             {menuItems.map((item) => (
-              <NavLink
+              <a
                 key={item.label}
-                to={item.href}
-                className={({ isActive }) => cn(
+                href="#"
+                className={cn(
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
-                  isActive
+                  item.active
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                 )}
               >
                 <item.icon className="w-5 h-5" />
                 {item.label}
-              </NavLink>
+              </a>
             ))}
           </nav>
         </div>
